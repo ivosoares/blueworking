@@ -61,7 +61,6 @@ function Home() {
           autoComplete="off"
         />
         <button type="submit" className="btn">Entrar</button>
-        <p>{email}</p>
       </form>
 
       {/* <Button texto="Enviar" estilo="sucesso"/>

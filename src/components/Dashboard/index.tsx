@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import './style.css'
+import { Link } from 'react-router-dom';
 import { dashboard } from '../../services/dashboard';
 
-type Response = {
+type Spot = {
   _id: string;
   thumbnail_url: string;
   techs: string[];
@@ -11,7 +12,8 @@ type Response = {
 }
 
 const Dashboard = () => {
-  const [spots, setSpots] = useState<Response[]>([])
+  // criamos o estado para inicializar os nossos spots
+  const [spots, setSpots] = useState<Spot[]>([])
 
   const loadSpots = async () => {
     
@@ -23,6 +25,7 @@ const Dashboard = () => {
     }
   }
 
+  // serve para controlar os efeitos colaterais e ciclo de vida da aplicacao.
   useEffect(() => {
     loadSpots();
     console.log('opa')
@@ -45,7 +48,9 @@ const Dashboard = () => {
         </li>
       ))}
       </ul>
-      <button className='btn'>Cadastrar novo spot</button>
+      <Link to="/new">
+        <button className='btn'>Cadastrar novo spot</button>
+      </Link>
     </>
   )
 }
